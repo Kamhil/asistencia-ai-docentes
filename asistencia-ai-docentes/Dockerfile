@@ -28,11 +28,13 @@ COPY . .
 # Instalar dependencias
 RUN composer install --no-dev --optimize-autoloader
 
-# Generar los caches de Laravel
-RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
+# (Opcional) Generar los caches de Laravel
+# Si te da errores al hacer build, déjalo comentado
+# RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
 
-# Exponer el puerto asignado por Railway/Render
-EXPOSE 8080
+# Exponer el puerto (no es obligatorio para Railway, pero ayuda)
+EXPOSE 8000
 
 # Comando para arrancar Laravel usando el servidor embebido
-CMD php artisan serve --host=0.0.0.0 --port=8080
+# Usa el puerto que Railway pone en $PORT (y si no existe, usa 8000)
+CMD ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"]

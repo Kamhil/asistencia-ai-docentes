@@ -1,0 +1,64 @@
+/* --- ESTILOS PARA MIEMBROS INDIVIDUALES (LAS TARJETAS MODERNAS) --- */
+
+/* Usamos un selector muy específico (section#equipo .team-member) 
+  para ganar la "guerra de CSS" contra el círculo.
+*/
+section#equipo .team-member {
+  background-color: #ffffff !important;   /* Fondo blanco */
+  border-radius: 8px !important;        /* Bordes rectangulares redondeados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08) !important; /* Sombra */
+  padding: 0 !important;                /* Sin padding interno */
+  margin-bottom: 2rem !important;
+  overflow: hidden !important;          /* Esencial para la tarjeta */
+  border: none !important;              /* ¡¡ADIÓS BORDE AMARILLO!! */
+  text-align: center;
+}
+
+/* Efecto hover en la tarjeta */
+section#equipo .team-member:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* REGLA #2: La imagen dentro de la tarjeta
+  Este selector también es muy específico.
+*/
+section#equipo .team-member img {
+  width: 100% !important;
+  height: 300px !important;            /* Altura de la imagen (ajusta si quieres) */
+  object-fit: cover !important;
+  object-position: 50% 20% !important; /* ¡¡ROSTROS CENTRADOS!! (Ajusta el 20% si es necesario) */
+  
+  /* ¡¡Las reglas anti-círculo más importantes!! */
+  border-radius: 0 !important;
+  border: none !important;
+  
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+}
+
+/* REGLA #3: El texto */
+section#equipo .team-member h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #212529;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+}
+
+section#equipo .team-member p.text-muted {
+  font-size: 1rem;
+  color: #6c757d;
+  margin-bottom: 1rem;
+}
+
+/* --- Estilos para la Foto Grupal (Banner) --- */
+.team-group-photo-container img {
+  width: 100%;
+  height: 350px; /* Altura reducida del banner grupal */
+  object-fit: cover;
+  object-position: top center; /* Para la foto "educacion.png" */
+  border: none !important;
+  border-radius: 0 !important;
+}

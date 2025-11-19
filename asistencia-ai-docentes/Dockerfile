@@ -35,6 +35,9 @@ RUN composer install --no-dev --optimize-autoloader
 # Exponer el puerto (no es obligatorio para Railway, pero ayuda)
 EXPOSE 8000
 
+RUN php artisan migrate --force || true
+
+
 # Comando para arrancar Laravel usando el servidor embebido
 # Usa el puerto que Railway pone en $PORT (y si no existe, usa 8000)
 CMD ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"]

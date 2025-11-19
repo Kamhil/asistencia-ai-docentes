@@ -10,7 +10,11 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     libzip-dev \
-    && docker-php-ext-install pdo pdo_mysql zip mbstring xml
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install pdo pdo_mysql zip mbstring xml gd
 
 # Instalar Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -27,7 +31,7 @@ RUN composer install --no-dev --optimize-autoloader
 # Generar los caches de Laravel
 RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
 
-# Exponer el puerto asignado por Render
+# Exponer el puerto asignado por Railway/Render
 EXPOSE 8080
 
 # Comando para arrancar Laravel usando el servidor embebido
